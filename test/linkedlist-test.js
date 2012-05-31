@@ -1,6 +1,5 @@
 var should = require('should'),
-    libDir = process.env.APISERVER_ROUTER_COV ? 'lib-cov' : 'lib',
-    LinkedList = require('../' + libDir + '/linkedlist')
+    LinkedList = require('../')
 
 var list
 

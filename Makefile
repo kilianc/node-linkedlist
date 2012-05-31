@@ -8,7 +8,7 @@ test-bail:
 
 test-cov:
 	$(MAKE) lib-cov
-	@LINKED_LIST_COV=1 $(MAKE) test REPORTER=html-cov > coverage.html
+	@LINKEDLIST_COV=1 $(MAKE) test REPORTER=html-cov > coverage.html
 	@open -g coverage.html
 
 lib-cov:
