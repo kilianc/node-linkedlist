@@ -1,9 +1,9 @@
-var should = require('should'),
-    LinkedList = require('../')
-
-var list
+var should = require('should')
+var LinkedList = require('../')
 
 describe('LinkedList', function () {
+  var list
+
   describe('#push()', function () {
     before(function () {
       list = new LinkedList()
@@ -24,6 +24,7 @@ describe('LinkedList', function () {
       list.current.should.be.equal('0')
     })
   })
+
   describe('#pop()', function () {
     describe('empty list', function () {
       before(function () {
@@ -42,6 +43,7 @@ describe('LinkedList', function () {
         should.not.exist(list.tail)
       })
     })
+
     describe('cursor at head', function () {
       before(function () {
         list = new LinkedList()
@@ -88,6 +90,7 @@ describe('LinkedList', function () {
         should.not.exist(list.next())
       })
     })
+
     describe('cursor at tail', function () {
       before(function () {
         list = new LinkedList()
@@ -115,6 +118,7 @@ describe('LinkedList', function () {
         should.not.exist(list.next())
       })
     })
+
     describe('cursor at middle', function () {
       before(function () {
         list = new LinkedList()
@@ -150,6 +154,7 @@ describe('LinkedList', function () {
       })
     })
   })
+
   describe('#shift()', function () {
     describe('empty list', function () {
       before(function () {
@@ -168,6 +173,7 @@ describe('LinkedList', function () {
         should.not.exist(list.tail)
       })
     })
+
     describe('cursor at head', function () {
       before(function () {
         list = new LinkedList()
@@ -205,6 +211,7 @@ describe('LinkedList', function () {
         list.length.should.be.equal(0)
       })
     })
+
     describe('cursor at tail', function () {
       before(function () {
         list = new LinkedList()
@@ -232,6 +239,7 @@ describe('LinkedList', function () {
         should.not.exist(list.next())
       })
     })
+
     describe('cursor at middle', function () {
       before(function () {
         list = new LinkedList()
@@ -266,6 +274,7 @@ describe('LinkedList', function () {
       })
     })
   })
+
   describe('#unshift()', function () {
     describe('empty list', function () {
       before(function () {
@@ -282,6 +291,7 @@ describe('LinkedList', function () {
         list.tail.should.be.equal('head')
       })
     })
+
     describe('cursor at head', function () {
       before(function () {
         list = new LinkedList()
@@ -304,6 +314,7 @@ describe('LinkedList', function () {
       })
     })
   })
+
   describe('#next()', function () {
     describe('empty list', function () {
       before(function () {
@@ -313,6 +324,7 @@ describe('LinkedList', function () {
         should.not.exist(list.next())
       })
     })
+
     describe('cursor at head', function () {
       before(function () {
         list = new LinkedList()
@@ -329,6 +341,7 @@ describe('LinkedList', function () {
       })
     })
   })
+
   describe('#resetCursor()', function () {
     before(function () {
       list = new LinkedList()
@@ -345,6 +358,7 @@ describe('LinkedList', function () {
       list.next().should.be.equal(1)
     })
   })
+
   describe('#removeCurrent()', function () {
     describe('empty list', function () {
       before(function () {
@@ -363,6 +377,7 @@ describe('LinkedList', function () {
         should.not.exist(list.tail)
       })
     })
+
     describe('cursor at head', function () {
       before(function () {
         list = new LinkedList()
@@ -397,6 +412,7 @@ describe('LinkedList', function () {
         should.not.exist(list.tail)
       })
     })
+
     describe('cursor at tail', function () {
       before(function () {
         list = new LinkedList()
@@ -432,6 +448,7 @@ describe('LinkedList', function () {
         should.not.exist(list.tail)
       })
     })
+
     describe('cursor at middle', function () {
       before(function () {
         list = new LinkedList()
@@ -470,6 +487,7 @@ describe('LinkedList', function () {
       })
     })
   })
+
   describe('#unshiftCurrent()', function () {
     describe('empty list', function () {
       before(function () {
@@ -479,6 +497,7 @@ describe('LinkedList', function () {
         should.not.exist(list.unshiftCurrent())
       })
     })
+
     describe('cursor at head', function () {
       before(function () {
         list = new LinkedList()
@@ -496,6 +515,7 @@ describe('LinkedList', function () {
         list.next().should.be.equal('0')
       })
     })
+
     describe('cursor at tail', function () {
       before(function () {
         list = new LinkedList()
@@ -527,6 +547,7 @@ describe('LinkedList', function () {
         }
       })
     })
+
     describe('cursor at middle', function () {
       before(function () {
         list = new LinkedList()
@@ -545,6 +566,97 @@ describe('LinkedList', function () {
       })
       it('should update next', function () {
         list.next().should.be.equal('5')
+      })
+    })
+  })
+
+  describe('#get()', function () {
+    describe('empty list', function () {
+      before(function () {
+        list = new LinkedList()
+      })
+      it('should throw out of bounds', function () {
+        should.throws(function () { list.get(0) })
+      })
+    })
+
+    describe('out of bounds', function () {
+      before(function () {
+        list = new LinkedList()
+        for (var i = 0; i < 10; i++) {
+          list.push(i.toString())
+        }
+      })
+      it('should throw / < 0', function () {
+        should.throws(function () { list.get(-1) })
+      })
+      it('should throw / > max', function () {
+        should.throws(function () { list.get(10) })
+      })
+    })
+
+    describe('not empty list', function () {
+      before(function () {
+        list = new LinkedList()
+        for (var i = 0; i < 10; i++) {
+          list.push(i.toString())
+        }
+      })
+      it('should return value', function () {
+        for (var i = 0; i < 10; i++) {
+          list.get(i).should.be.equal(i.toString())
+        }
+      })
+    })
+  })
+
+  describe('#at()', function () {
+    before(function () {
+      list = new LinkedList()
+      for (var i = 0; i < 10; i++) {
+        list.push(i.toString())
+      }
+    })
+    it('should be alias for get', function () {
+      list.at(1).should.be.equal('1')
+    })
+  })
+
+  describe('#set()', function () {
+    describe('empty list', function () {
+      before(function () {
+        list = new LinkedList()
+      })
+      it('should throw error', function () {
+        should.throws(function () { list.set(0, 'hello') })
+      })
+    })
+
+    describe('out of bounds', function () {
+      before(function () {
+        list = new LinkedList()
+        for (var i = 0; i < 10; i++) {
+          list.push(i.toString())
+        }
+      })
+      it('should throw error / < 0', function () {
+        should.throws(function () { list.set(-1, 'hello') })
+      })
+      it('should throw error / > max', function () {
+        should.throws(function () { list.set(10, 'hello') })
+      })
+    })
+
+    describe('not empty list', function () {
+      before(function () {
+        list = new LinkedList()
+        for (var i = 0; i < 10; i++) {
+          list.push(i.toString())
+        }
+      })
+      it('should set value', function () {
+        list.set(5, 'hello').should.be.equal('hello')
+        list.get(5).should.be.equal('hello')
       })
     })
   })

@@ -10,6 +10,9 @@ LinkedList.prototype.pop()
 LinkedList.prototype.unshift(data)
 LinkedList.prototype.shift()
 LinkedList.prototype.next()
+LinkedList.prototype.get(index)
+LinkedList.prototype.at(index)
+LinkedList.prototype.set(index, data)
 LinkedList.prototype.unshiftCurrent()
 LinkedList.prototype.removeCurrent()
 LinkedList.prototype.resetCursor()
@@ -85,10 +88,6 @@ The test suite is written on top of [visionmedia/mocha](http://visionmedia.githu
 
     ⚡ npm test
 
-and for your test coverage
-
-    ⚡ make test-cov
-
 ## License
 
 _This software is released under the MIT license cited below_.
@@ -103,10 +102,10 @@ _This software is released under the MIT license cited below_.
     copies of the Software, and to permit persons to whom the
     Software is furnished to do so, subject to the following
     conditions:
-    
+
     The above copyright notice and this permission notice shall be
     included in all copies or substantial portions of the Software.
-    
+
     THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
