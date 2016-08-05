@@ -2,13 +2,19 @@
   "author": "Kilian Ciuffolo <me@nailik.org> (http://nailik.org)",
   "name": "linkedlist",
   "description": "Array like linked list with iterator",
-  "keywords": ["array", "linked", "list", "linkedlist", "iterator"],
+  "keywords": [
+    "array",
+    "linked",
+    "list",
+    "linkedlist",
+    "iterator"
+  ],
   "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "http://github.com/kilianc/node-linkedlist.git"
   },
-  "main" : "./",
+  "main": "./",
   "scripts": {
     "test": "make test"
   },
@@ -17,7 +23,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "mocha": "1.0.x",
-    "should": "0.6.1"
+    "mocha": "^3.0.1",
+    "should": "^10.0.0"
   }
 }
