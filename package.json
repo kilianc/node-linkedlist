@@ -14,7 +14,7 @@
     "type": "git",
     "url": "http://github.com/kilianc/node-linkedlist.git"
   },
-  "main": "./",
+  "main": "./lib/linkedlist.js",
   "scripts": {
     "test": "make test"
   },
