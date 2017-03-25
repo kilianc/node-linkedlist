@@ -568,6 +568,38 @@ describe('LinkedList', function () {
         list.next().should.be.equal('5')
       })
     })
+    describe('Removing node in iteration (non-first positions)', function () {
+      before(function () {
+        list = new LinkedList()
+        for (var i = 0; i < 3; i++) {
+          list.push(i.toString())
+        }
+      })
+      it('should list 0 2 3', function () {
+        var cnt = 0;
+        while (list.next()) {
+          list.current.should.be.equal("" + cnt);
+          if (list.current === "1") list.removeCurrent();
+          cnt++;
+        }
+      })
+    })
+    describe('Removing node in iteration (first positions)', function () {
+      before(function () {
+        list = new LinkedList()
+        for (var i = 0; i < 3; i++) {
+          list.push(i.toString())
+        }
+      })
+      it('should list 1 2 3', function () {
+        var cnt = 0;
+        while (list.next()) {
+          list.current.should.be.equal("" + cnt);
+          if (list.current === "0") list.removeCurrent();
+          cnt++;
+        }
+      })
+    })
   })
 
   describe('#get()', function () {
